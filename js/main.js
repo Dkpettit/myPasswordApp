@@ -302,7 +302,7 @@ window.onload = () => {
     cache: "default",
   };
 
-  let myRequest = new Request("../js/koala.json", myInit);
+  let myRequest = new Request("./js/koala.json", myInit);
 
   fetch(myRequest)
     .then(function (resp) {
@@ -315,6 +315,7 @@ window.onload = () => {
 
 function saveText(text) {
   var a = document.createElement("a");
+  console.log(loadedData);
   a.setAttribute(
     "href",
     "data:text/plain;charset=utf-8," + encodeURIComponent(text)
