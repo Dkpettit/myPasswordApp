@@ -1,0 +1,236 @@
+.d-flex input {
+  margin: 0.9em 0em;
+}
+
+.d-flex button {
+  margin: 1.5em 0.6em;
+  padding: 0.3em 2.4em;
+}
+
+.container table {
+  margin: 1em 10em;
+}
+
+table .btnedit {
+  color: lightgreen;
+  cursor: pointer;
+}
+
+table .btndelete {
+  color: tomato;
+  cursor: pointer;
+}
+
+table .btncopy {
+  color: lightblue;
+  cursor: pointer;
+}
+
+/*messages*/
+.insertmsg,
+.updatemsg,
+.deletemsg,
+.copymsg {
+  position: absolute;
+  top: -40px;
+}
+
+.movedown {
+  animation: slideup 3.4s ease;
+}
+
+@keyframes slideup {
+  50% {
+    top: 0;
+  }
+  100% {
+    top: -40px;
+  }
+}
+
+/*Modal Styling*/
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+.modal-body {
+  display: flex;
+  font-family: "Muli", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.modal-body p {
+  margin: 5px 0;
+}
+
+.modal-body input[type="checkbox"] {
+  margin-right: 0;
+}
+
+.modal-body.container {
+  background-color: #23235b;
+  box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  width: 350px;
+  max-width: 100%;
+}
+
+.modal-body.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}
+header {
+  display: none;
+}
+#smallTable {
+  display: none;
+}
+
+#password-sm,
+#loginId-sm {
+  visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  #password-sm,
+  #loginId-sm {
+    visibility: visible;
+  }
+  #password,
+  #loginId {
+    display: none;
+  }
+  .buttonCtnr .btn {
+    display: none;
+  }
+  #lrgTable {
+    display: none;
+  }
+  #smallTable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Header, Nav and hamburger */
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    opacity: 0.9;
+    transform: translateX(100%);
+    transition: transform 250ms cubic-bezier(0.5, 0, 0.5, 1);
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+  }
+
+  .nav__item {
+    float: left;
+    list-style: none;
+    text-align: center;
+    height: 50px;
+    width: 150px;
+    line-height: 60px;
+    border-bottom: 1px solid white;
+  }
+
+  .nav__item i {
+    margin-left: 10px;
+    justify-content: right;
+    align-items: right;
+  }
+
+  ul li:focus {
+    background-color: white;
+    color: black;
+  }
+
+  .nav__link {
+    color: inherit;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+
+  .nav-toggle {
+    padding: 0.5em;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 1000;
+  }
+
+  .nav-open .nav {
+    transform: translateX(5%);
+    /* transform: translateX(50%); */
+  }
+
+  .nav-open .nav-toggle {
+    position: fixed;
+  }
+
+  .nav-open .hamburger {
+    transform: rotate(0.625turn);
+  }
+
+  .nav-open .hamburger::before {
+    transform: rotate(90deg) translateX(-6px);
+  }
+
+  .nav-open .hamburger::after {
+    opacity: 0;
+  }
+
+  .hamburger {
+    display: block;
+    position: relative;
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    background: blue;
+    width: 2em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .hamburger::before {
+    top: 6px;
+  }
+
+  .hamburger::after {
+    bottom: 6px;
+  }
+}

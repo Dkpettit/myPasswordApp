@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Password App</title>
+    <link
+      rel="shortcut icon"
+      type="image/ico"
+      href="../assets/icons8-lock-64.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/8c41228f62.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header>
+      <button class="nav-toggle" aria aria-label="toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <!--apply modals to links in nav-->
+      <nav class="nav bg-secondary">
+        <ul class="nav__list text-primary">
+          <li class="nav__item text-white">
+            <a
+              class="nav__link"
+              data-toggle="modal"
+              data-target="#generateModal"
+              >Generate&nbsp;&nbsp;&nbsp;</a
+            ><i class="fas fa-brain"></i>
+          </li>
+          <li class="nav__item text-white">
+            <a class="nav__link" id="createLink"
+              >Create&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
+            ><i class="fas fa-hammer"></i>
+          </li>
+          <li class="nav__item text-white">
+            <a class="nav__link" id="readLink">View All&nbsp;&nbsp;&nbsp;</a
+            ><i class="fas fa-binoculars"></i>
+          </li>
+          <li class="nav__item text-white">
+            <a class="nav__link" id="updateLink"
+              >Update&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
+            ><i class="far fa-thumbs-up"></i>
+          </li>
+          <li class="nav__item text-white">
+            <a class="nav__link" id="deleteLink">Delete All&nbsp;</a
+            ><i class="far fa-thumbs-down"></i>
+          </li>
+          <li class="nav__item text-white">
+            <a class="nav__link" id="saveLink">Save Data&nbsp;&nbsp;</a
+            ><i class="far fa-check-square"></i>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container text-center">
+      <h1 class="bg-light py-4 text-info">
+        <i class="fas fa-user-lock"></i> My Password App
+      </h1>
+    </div>
+    <div class="d-flex justify-content-center">
+      <form action="" class="w-50">
+        <input
+          type="text"
+          id="accountId"
+          readonly
+          class="form-control"
+          placeholder="Id"
+          autocomplete="off"
+        />
+        <input
+          type="text"
+          id="accountName"
+          class="form-control"
+          placeholder="Account Name"
+          autocomplete="off"
+        />
+        <div class="row">
+          <div class="col">
+            <input
+              type="text"
+              id="loginId"
+              class="form-control m-0"
+              placeholder="Login Id"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              id="password"
+              class="form-control m-0"
+              placeholder="Password"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <input
+          type="text"
+          id="loginId-sm"
+          class="form-control"
+          placeholder="Login Id"
+          autocomplete="off"
+        />
+        <input
+          type="text"
+          id="password-sm"
+          class="form-control"
+          placeholder="Password"
+          autocomplete="off"
+        />
+      </form>
+    </div>
+
+    <!-- Create, update, read and delete buttons-->
+    <!-- TODO: Add upload button, and link in nav -->
+    <div class="d-flex justify-content-center buttonCtnr">
+      <button
+        class="btn btn-primary"
+        id="btn-generate"
+        data-toggle="modal"
+        data-target="#generateModal"
+      >
+        Generate A Password
+      </button>
+      <button class="btn btn-success" id="btn-create">Create</button>
+      <button class="btn btn-primary" id="btn-read">View All</button>
+      <button class="btn btn-warning" id="btn-update">Update</button>
+      <button class="btn btn-danger" id="btn-delete">Delete All</button>
+      <button class="btn btn-success" id="btn-save">Save Data</button>
+    </div>
+    <div class="container d-flex">
+      <!-- TODO: add list for smaller displays -->
+      <table class="table" id="lrgTable">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Account Name</th>
+            <th scope="col">Login Id</th>
+            <th scope="col">Password</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Copy</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="table-responsive-md">
+      <table class="table" id="smallTable">
+        <thead>
+          <tr>
+            <th scope="col">Account Name</th>
+          </tr>
+        </thead>
+        <tbody id="tbodySm"></tbody>
+      </table>
+    </div>
+    <div class="container text-center">
+      <div id="notfound"></div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="generateModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="generateModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-info" id="generateModalLabel">
+              Generate a Password
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="settings">
+                <div class="setting">
+                  <label>Password length</label>
+                  <input
+                    type="number"
+                    id="length"
+                    min="4"
+                    max="20"
+                    value="20"
+                  />
+                </div>
+                <div class="setting">
+                  <label>Include uppercase letters</label>
+                  <input type="checkbox" id="uppercase" checked />
+                </div>
+                <div class="setting">
+                  <label>Include lowercase letters</label>
+                  <input type="checkbox" id="lowercase" checked />
+                </div>
+                <div class="setting">
+                  <label>Include numbers</label>
+                  <input type="checkbox" id="numbers" checked />
+                </div>
+                <div class="setting">
+                  <label>Include symbols</label>
+                  <input type="checkbox" id="symbols" checked />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="generate"
+              data-dismiss="modal"
+            >
+              Generate
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-100 btn btn-success insertmsg">
+      Data Inserted Successfully
+    </div>
+    <div class="w-100 btn btn-warning updatemsg">
+      Data Updated Successfully...Refresh to see reults
+    </div>
+    <div class="w-100 btn btn-danger deletemsg">Data Deleted..!</div>
+    <div class="w-100 btn btn-success copymsg">
+      Password Copied to clipboard...
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Dexie API -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dexie/3.0.1/dexie.min.js"
+      integrity="sha256-CbTA/LMThZ+vQ/Ie9jGYhoTXLWzBZz3PmYc7JZETJwE="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom Javascript main.js -->
+    <script src="./js/main.js" type="module"></script>
+  </body>
+</html>
