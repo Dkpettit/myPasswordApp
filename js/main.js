@@ -301,16 +301,6 @@ window.onload = () => {
     mode: "cors",
     cache: "default",
   };
-
-  let myRequest = new Request("./js/koala.json", myInit);
-
-  fetch(myRequest)
-    .then(function (resp) {
-      return resp.json();
-    })
-    .then(function (data) {
-      loadedData = data;
-    });
 };
 
 function saveText(text) {
